@@ -1,5 +1,10 @@
-#easy_admin:
-#    entities:
+easy_admin:
+  entities:
+    - App\Entity\Represen
+    - App\Entity\Clientes
+    - App\Entity\Articulo
+    - App\Entity\Cabepedv
+    - App\Entity\Linepedi
 #        # List the entity class name you want to manage
 #        - App\Entity\Product
 #        - App\Entity\Category

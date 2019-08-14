@@ -4,7 +4,7 @@
 
 namespace App\Controller;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController as BaseAdminController;
+use AlterPHP\EasyAdminExtensionBundle\Controller\EasyAdminController as BaseAdminController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends BaseAdminController
