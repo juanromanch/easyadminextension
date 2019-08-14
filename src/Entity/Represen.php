@@ -49,8 +49,9 @@ class Represen extends BaseUser
         $this->clientes = new ArrayCollection();
         $this->cabepedvs = new ArrayCollection();
         // your own logic
-        // Establecemos Activo a true
+        // Establecemos Activo a true y damos valor 0 a Codrep
         $this->enabled = true;
+        $this->Codrep = 0;
     }
 
     /**
