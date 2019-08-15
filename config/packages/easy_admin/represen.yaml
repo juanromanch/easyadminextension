@@ -1,0 +1,43 @@
+# Ver https://www.strangebuzz.com/en/snippets/use-a-custom-query-builder-in-yaml-with-the-easyadmin-bundle-to-configure-entities-widgets para filtrar clientes por representante o pedidos por representante o lineas de pedidos por cabeceras de pedidos
+easy_admin:
+  entities:
+    Represen:
+      class: App\Entity\Represen
+      label: 'Representantes'
+      form:
+        fields:
+          - { property: 'Codrep', label: 'Código en Nexus' , type: 'text'}
+          - { property: 'Nomrep', label: 'Nombre' , type: 'text'}
+          - { property: 'Nomrep', label: 'Nombre' , type: 'text'}
+          - { property: 'Email', label: 'Correo' , type: 'text'}
+          - { property: 'Username', label: 'Usuario (NIF en Nexus)' , type: 'text'}
+          - { property: 'plainPassword', label: 'Contraseña (ALIAS en Nexus)', type: 'text', type_options: { required: false } }
+          - { property: 'enabled', label: 'Activo?' }
+          #- enabled
+          # if administrators are allowed to edit users' passwords and roles, add this:
+          #- { property: 'plainPassword', label: 'Contraseña (ALIAS en Nexus) - Vacía para no cambiarla', type: 'text', type_options: { required: false } }
+          - { property: 'roles', label: 'Tipo de usuario' ,type: 'choice', type_options: { multiple: true, choices: { 'Representante': 'ROLE_USER', 'Administrador': 'ROLE_ADMIN' } } }
+      edit:
+        label: 'Editar Representante'
+        fields:
+          - { property: 'plainPassword', label: 'Contraseña (ALIAS en Nexus) - Vacía para no cambiarla', type_options: { required: false} }
+        form_options: { validation_groups: ['Profile'] }
+      new:
+        label: 'Nuevo Representante'
+        fields:
+          # ...
+          - { property: 'Codrep', label: 'Código en Nexus' , type: 'text', type_options: { required: true} }
+          - { property: 'Nomrep', label: 'Nombre' , type: 'text', type_options: { required: true} }
+          - { property: 'Email', label: 'Correo' , type: 'text', type_options: { required: true} }
+          - { property: 'Username', label: 'Usuario (NIF en Nexus)' , type: 'text', type_options: { required: true} }
+          - { property: 'plainPassword', label: 'Contraseña (ALIAS en Nexus)', type_options: { required: true} }
+          # ...
+        form_options: { validation_groups: ['Registration'] }
+      list:
+        fields:
+          - { property: 'Codrep', label: 'Código en Nexus', sortable: true }
+          - { property: 'Nomrep', label: 'Nombre', sortable: true }
+          - { property: 'enabled', label: 'Activo?', sortable: true }
+          - { property: 'Username', label: 'Usuario', sortable: true }
+          - { property: 'Email', label: 'Correo' }
+          - { property: 'last_login', label: 'Última Conexión', type: 'date', sortable: true }

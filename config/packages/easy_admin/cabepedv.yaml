@@ -1,0 +1,18 @@
+# Ver https://www.strangebuzz.com/en/snippets/use-a-custom-query-builder-in-yaml-with-the-easyadmin-bundle-to-configure-entities-widgets para filtrar clientes por representante o pedidos por representante o lineas de pedidos por cabeceras de pedidos
+easy_admin:
+  entities:
+    CabePedV:
+      class: App\Entity\Cabepedv
+      label: 'Pedidos'
+      list:
+        fields:
+          - { property: 'Codrep', label: 'Representante', sortable: true }
+          #- { property: 'Codrep', type: 'entity', type-options: { class: 'App\Entity\Represen', required: true, multiple: false, query_builder: 'App\Repository\CabepedvRepository::encuentraPedidosPorRepresentante' }, css_class: 'col-sm-6' }
+          - { property: 'Codcli', label: 'Cliente', sortable: true }
+          - { property: 'Fecha', label: 'Fecha', type: 'date', sortable: true }
+      new:
+        fields:
+          - { property: 'Codrep', label: 'Representante', type: 'easyadmin_autocomplete', type_options: { required: true} }
+          - { property: 'Codcli', label: 'Cliente', type: 'easyadmin_autocomplete', type_options: { required: true} }
+          - { property: 'Fecha', label: 'Fecha', type_options: { widget: 'single_text', required: true } }
+          - { property: 'Observaciones', label: 'Observaciones', type_options: { required: false} }
